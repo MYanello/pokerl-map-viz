@@ -51,7 +51,7 @@ async def listen_to_websocket(uri):
             await asyncio.sleep(1)  # Wait before reconnecting
 
 async def main():
-    uri = "wss://transdimensional.xyz/receive"
+    uri = "ws://localhost:3344/receive"
     await listen_to_websocket(uri)
 
 # Run the main function

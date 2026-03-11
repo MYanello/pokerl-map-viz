@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pokerl-map-viz
+  labels:
+    app: pokerl-map-viz
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pokerl-map-viz
+  template:
+    metadata:
+      labels:
+        app: pokerl-map-viz
+    spec:
+      containers:
+        - name: pokerl-map-viz
+          image: harbor.yanello.net/library/pokerl-map-viz:latest
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+            - name: websocket
+              containerPort: 3344
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
