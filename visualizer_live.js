@@ -288,7 +288,7 @@ PIXI.Assets.load([
         if (socket !== null) {
             socket.close(); // Close the current connection
         }
-        socket = initializeWebSocket("wss://transdimensional.xyz/receive");
+        socket = initializeWebSocket("ws://localhost:3344/receive");
     };
 
     refreshWS();
