@@ -22,12 +22,12 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
-      # - name: Login to Harbor
-      #   uses: docker/login-action@v3
-      #   with:
-      #     registry: harbor.yanello.net
-      #     username: ${{ secrets.HARBOR_USERNAME }}
-      #     password: ${{ secrets.HARBOR_PASSWORD }}
+      - name: Login to Harbor
+        uses: docker/login-action@v3
+        with:
+          registry: harbor.yanello.net
+          username: ${{ secrets.HARBOR_USERNAME }}
+          password: ${{ secrets.HARBOR_PASSWORD }}
 
       - name: Build and Push
         uses: docker/build-push-action@v6
