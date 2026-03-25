@@ -6,7 +6,7 @@ function isWebGLAvailable() {
     const canvas = document.createElement("canvas");
     return !!(
       window.WebGLRenderingContext &&
-      (canvas.getContext("webgl") || canvas.getContext("experimental-webll"))
+      (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
     );
   } catch (e) {
     return false;
@@ -16,7 +16,7 @@ function isWebGLAvailable() {
 // Create a PixiJS application
 const app = new PIXI.Application({
   resizeTo: window,
-  forceCanvas: !isWebGLAvailable,
+  forceCanvas: !isWebGLAvailable(),
   eventMode: "static",
   eventFeatures: {
     wheel: true,
